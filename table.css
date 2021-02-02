@@ -1,0 +1,140 @@
+body {
+    margin: auto;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.cell {
+    width : 20px;
+    height : 20px;
+    background-color :  aquamarine;
+}
+
+.table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-tile {
+    text-align: center;
+    padding: 2%;
+    background-color: darksalmon;
+}
+
+button {
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+    font-size: 15px;
+    margin: 5px 5px;
+}
+
+select {
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+    font-size: 14px;
+    margin: 5px 5px;
+}
+
+#visualize {
+    background-color: yellowgreen;
+}
+
+#reset-visualize {
+    background-color: indianred;
+}
+
+.main-grid {
+    padding: 2%;
+}
+
+.index-section {
+    text-align: center;
+    font-size: large;
+    padding: 2%;
+    
+}
+
+.index-item {
+    padding: 10px;
+}
+
+.key {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+
+.iStart {
+    background-color: forestgreen;
+}
+
+.iTarget {
+    background-color: crimson;
+}
+
+.iVisited {
+    background-color: lightcoral;
+}
+
+.iObstacle {
+    background-color: gray;
+}
+
+.iSp {
+    background-color: royalblue;
+}
+
+.iUnvisited {
+    background-color: aquamarine;
+}
+ 
+#description {
+    text-align: center;
+    font-size: large;
+    font-family: cursive;
+    padding-bottom: 1%;
+}
+
+#results {
+    padding-left: 82%;
+    font-family: cursive;
+}
+
+#useDiagonals-sec {
+    padding-top: 2px;
+}
+
+.shortest-path {
+    background-color: royalblue;
+}
+
+.visited-path {
+    background-color: lightcoral;
+}
+
+.start-cell {
+    background-color: forestgreen;
+}
+
+.target-cell {
+    background-color: crimson;
+}
+
+.obstacle {
+    background-color: gray;
+}
+
+.travelling-start {
+    background-color: forestgreen;
+}
+
+.travelling-target {
+    background-color: crimson;
+}

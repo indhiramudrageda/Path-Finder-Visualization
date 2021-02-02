@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>Pathfinding Visualizer</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Visualization tool for various pathfinding algorithms">
+    <meta name="keywords" content="Pathfinding, Shortest path, Dijkstra, BFS">
+    <meta name="author" content="Indhira Mudrageda">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="table.css">  
+    <script src="shortestPath.js" defer></script>  
+    <script src="DFS.js" defer></script> 
+    <script src="BFS.js" defer></script> 
+    <script src="prioirtyQueue.js" defer></script> 
+    <script src="dijkstra.js" defer></script> 
+    <script src="aStar.js" defer></script> 
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+    <div class="menu-tile">
+        <select name="algorithms" id="algorithms">
+            <option value="BFS">BFS</option>
+            <option value="Dijkstra">Dijkstra</option>
+            <option value="A*">A*</option>
+            <option value="DFS">DFS</option>
+        </select>
+        <button id="visualize">Visualize</button>
+        <button id="reset-visualize">Reset Grid</button>
+        <div id="useDiagonals-sec">
+            <input type="checkbox" id="useDiagonals">
+            <label for="useDiagonals">Use diagonals</label><br>
+        </div>
+    </div>
+    <div class="main-grid">
+        <div class="index-section">
+            <span class="index-item">
+                <span class="iStart key"></span>
+                <span class="iValue">Start Node</span>
+            </span>
+            <span class="index-item">
+                <span class="iTarget key"></span>
+                <span class="iValue">Target Node</span>
+            </span>
+            <span class="index-item">
+                <span class="iObstacle key"></span>
+                <span class="iValue">Obstacle Node</span>
+            </span>
+            <span class="index-item">
+                <span class="iVisited key"></span>
+                <span class="iValue">Visited Node</span>
+            </span>
+            <span class="index-item">
+                <span class="iSp key"></span>
+                <span class="iValue">Shortest-path Node</span>
+            </span>
+            <span class="index-item">
+                <span class="iUnvisited key"></span>
+                <span class="iValue">Unvisited Node</span>
+            </span>
+        </div>
+    
+        <div class="desc-section"> 
+            <div id="description"></div>
+            <div id="results">distance: --</div>
+        </div>
+    </div>
+</body>
+
+</html>
