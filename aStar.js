@@ -17,7 +17,7 @@ class AStar extends ShortestPath{
     }
 
     executeAStar(visitedCells) {
-        const open = new PriorityQueue('aStar');
+        const open = new PriorityQueue(this.compare);
         const closed = [];
         const distances = Array(this.rowLen).fill().map(() => Array(this.colLen).fill(Number.MAX_SAFE_INTEGER));
         const neighbors = this.getNeighbors();
@@ -88,5 +88,9 @@ class AStar extends ShortestPath{
             } 
         }
         return lowerPresent;
+    }
+
+    compare(element1, element2) {
+        return element1.g + element1.h < element2.g + element2.h;
     }
 }

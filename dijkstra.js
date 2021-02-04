@@ -17,7 +17,7 @@ class Dijkstra extends ShortestPath {
     }
 
     executeDijkstra(visitedCells) {
-        const queue = new PriorityQueue('dijkstra');
+        const queue = new PriorityQueue(this.compare);
         const distances = Array(this.rowLen).fill().map(() => Array(this.colLen).fill(Number.MAX_SAFE_INTEGER));
         const neighbors = this.getNeighbors();
         const rows = neighbors.rows;
@@ -57,5 +57,9 @@ class Dijkstra extends ShortestPath {
             visitedCells.push(this.grid[curr.loc[0]][curr.loc[1]]);
         }
         return this.getPathNotFoundResult();
+    }
+
+    compare(element1, element2) {
+        return element1.dist < element2.dist;
     }
 }

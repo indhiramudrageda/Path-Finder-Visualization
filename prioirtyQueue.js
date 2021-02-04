@@ -2,9 +2,9 @@ class PriorityQueue {
     collection;
     algo;
 
-    constructor(algo) {
+    constructor(compareHandler) {
+        this.compareHandler = compareHandler;
         this.collection = [];
-        this.algo = algo;
     }
 
     offer(element){
@@ -13,7 +13,7 @@ class PriorityQueue {
         } else {
             let added = false;
             for (let i = 0; i < this.collection.length; i++){
-                if (this.compare(element, this.collection[i])){ 
+                if (this.compareHandler(element, this.collection[i])){ 
                     this.collection.splice(i, 0, element);
                     added = true;
                     break;
@@ -49,15 +49,5 @@ class PriorityQueue {
 
     isEmpty() {
         return (this.collection.length === 0) 
-    }
-
-    compare(element1, element2) {
-        if(this.algo == 'dijkstra') {
-            return element1.dist < element2.dist;
-        } else if(this.algo == 'aStar') {
-            return element1.g + element1.h < element2.g + element2.h;
-        } else {
-            return element1 < element2;
-        }
     }
 }
