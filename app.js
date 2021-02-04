@@ -181,15 +181,7 @@ const updateAlgoithmDescription = function() {
     }
     const desc = body.querySelector('#description');
     const selectedAlgoVal = selectedAlgo.value;
-    if(selectedAlgoVal == 'BFS') {
-        desc.innerHTML = 'Breath-first Search is unweighted and guarantees the shortest path!';
-    } else if(selectedAlgoVal == 'Dijkstra') {
-        desc.innerHTML = "Dijkstra's Algorithm is weighted and guarantees the shortest path!";
-    } else if(selectedAlgoVal == 'A*') {
-        desc.innerHTML = 'A* Search is weighted and guarantees the shortest path!';
-    } else if(selectedAlgoVal == 'DFS') {
-        desc.innerHTML = 'Depth-first Search is unweighted and does not guarantee the shortest path!';
-    }
+    desc.innerHTML = body.querySelector("[value='" + selectedAlgoVal + "']").dataset.info;
 };
 
 const disableActions = function() {

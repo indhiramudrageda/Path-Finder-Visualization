@@ -19,11 +19,11 @@
 
 <body>
     <div class="menu-tile">
-        <select name="algorithms" id="algorithms">
-            <option value="BFS">BFS</option>
-            <option value="Dijkstra">Dijkstra</option>
-            <option value="A*">A*</option>
-            <option value="DFS">DFS</option>
+        <select name="algorithms" id="algorithms" data-info="none">
+            <option value="BFS" data-info="Breath-first Search is unweighted and guarantees the shortest path!">BFS</option>
+            <option value="Dijkstra" data-info="Dijkstra's Algorithm is weighted and guarantees the shortest path!">Dijkstra</option>
+            <option value="A*" data-info="A* Search is weighted and guarantees the shortest path!">A*</option>
+            <option value="DFS" data-info="Depth-first Search is unweighted and does not guarantee the shortest path!">DFS</option>
         </select>
         <button id="visualize">Visualize</button>
         <button id="reset-visualize">Reset Grid</button>
