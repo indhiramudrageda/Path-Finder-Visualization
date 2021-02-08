@@ -62,32 +62,38 @@ class Table {
                     td.classList.add('normal');
                 }
                 cell.tdElement = td;
+                td.setAttribute('draggable', true);
+                // Mouse events are for drawing walls of obstacles
                 td.addEventListener('mousedown', this.mouseDownHandle.bind(this, cell));
                 td.addEventListener('mouseup', this.mouseUpHandle.bind(this, cell));
                 td.addEventListener('mouseenter', this.mouseEnterHandle.bind(this, cell));
+                // Drag and drop events are for moving start and target cells
+                td.addEventListener('dragstart', this.dragStartHandle.bind(this, cell));
+                td.addEventListener('drop', this.dropHandle.bind(this, cell));
+                td.addEventListener('dragover', this.dragOverHandle.bind(this, cell));
                 tr.appendChild(td);
             });
         });
         body.querySelector('.main-grid').appendChild(table);
     }
 
-    mouseDownHandle(cell) {
-        event.preventDefault();
-        if(state == 'running') {
+    dragStartHandle(cell) {
+        if(state == 'running' || cell.status == "normal" || cell.status == "obstacle") {
             return;
         }
-        if(cell.status == 'normal' || cell.status == 'obstacle') {
-            cell.tdElement.classList.toggle('obstacle');
-            cell.tdElement.classList.toggle('normal');
-            cell.status = cell.status == 'normal' ? 'obstacle' : 'normal';
-        } 
+        event.dataTransfer.dropEffect = "move";
         this.movingCell = cell;
     }
 
-    mouseUpHandle(cell) {
+    dragOverHandle(cell) {
+        if(state == 'running' || this.movingCell.status == "normal" || this.movingCell.status == "obstacle") {
+            return;
+        }
         event.preventDefault();
+    }
+
+    dropHandle(cell) {
         if(this.movingCell.status === undefined || cell.status == 'obstacle' || state == 'running') {
-            this.movingCell = {};
             return;
         }
         if(this.movingCell.status == 'start' && cell.status != 'target') {
@@ -102,13 +108,35 @@ class Table {
             this.target = [cell.row, cell.col];
         } 
         this.movingCell = {};
+    }
+
+    mouseDownHandle(cell) {
+        if(cell.status == "start" || cell.status == 'target' || state == 'running') {
+            return;
+        }
+        event.preventDefault();
+        if(cell.status == 'normal' || cell.status == 'obstacle') {
+            cell.tdElement.classList.toggle('obstacle');
+            cell.tdElement.classList.toggle('normal');
+            cell.status = cell.status == 'normal' ? 'obstacle' : 'normal';
+        } 
+        this.movingCell = cell;
+    }
+
+    mouseUpHandle(cell) {
+        if(this.movingCell.status == "start" || this.movingCell.status == 'target') {
+            return;
+        }
+        event.preventDefault(); 
+        this.movingCell = {};
      }
 
      mouseEnterHandle(cell) {
+        if(this.movingCell.status == "start" || this.movingCell.status == 'target' 
+            || this.movingCell.status === undefined || state == 'running') {
+            return;
+        }
          event.preventDefault();
-         if(this.movingCell.status === undefined || state == 'running') {
-             return;
-         }
          if(this.movingCell.status == 'obstacle') {
             if(cell.status == 'normal' || cell.status == 'obstacle') {
                 cell.tdElement.classList.toggle('obstacle');
